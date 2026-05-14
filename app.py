@@ -842,15 +842,18 @@ elif PAGE == "help":
 # ══════════════════════════════════════════════════════════════════════════════
 # CONTACT
 # ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════════════════
+# CONTACT
+# ══════════════════════════════════════════════════════════════════════════════
 elif PAGE == "contact":
     st.markdown('<div class="hero-banner" style="padding:1.5rem 3rem;"><div class="hero-title" style="font-size:1.8rem;">📬 Contact Us</div><div class="hero-sub">Get in touch with the GraphAISMNet team</div></div>', unsafe_allow_html=True)
     st.markdown('<div class="page-section">', unsafe_allow_html=True)
     
-    # Use columns to center the contact card (1 part left, 2 parts center, 1 part right)
-    _, col_center, _ = st.columns([1, 2, 1])
+    # Use a two-column layout to organize the 5 contacts cleanly
+    c1, c2 = st.columns(2, gap="large")
     
-    with col_center:
-        st.markdown("""<div class="card card-blue">
+    with c1:
+        st.markdown("""<div class="card card-blue" style="margin-bottom: 1.2rem;">
         <div style="font-family:Poppins;font-weight:700;color:#1B4FA8;font-size:1rem;margin-bottom:.8rem;">Principal Investigator</div>
         <div style="font-size:.87rem;color:#2D3748;line-height:1.8;">
             <b>Dr. Thirumurthy Madhavan, Ph.D.</b><br>
@@ -864,16 +867,55 @@ elif PAGE == "contact":
             <b>Mobile:</b> +91-9944572918<br>
             <b>Website:</b> <a href="https://www.srmist.edu.in" target="_blank" style="color:#1B4FA8;">www.srmist.edu.in</a>
         </div></div>""", unsafe_allow_html=True)
+
+        st.markdown("""<div class="card card-blue" style="margin-bottom: 1.2rem;">
+        <div style="font-family:Poppins;font-weight:700;color:#1B4FA8;font-size:1rem;margin-bottom:.8rem;">Ms. Subathra Selvam. PhD</div>
+        <div style="font-size:.87rem;color:#2D3748;line-height:1.8;">
+            Research Scholar<br>
+            Computational lab<br>
+            Department for Genetic Engineering<br>
+            School of Bioengineering<br>
+            SRMIST
+        </div></div>""", unsafe_allow_html=True)
+
+        st.markdown("""<div class="card card-blue" style="margin-bottom: 1.2rem;">
+        <div style="font-family:Poppins;font-weight:700;color:#1B4FA8;font-size:1rem;margin-bottom:.8rem;">Ms. Priya Dharshini B. PhD</div>
+        <div style="font-size:.87rem;color:#2D3748;line-height:1.8;">
+            Research Scholar<br>
+            Computational lab<br>
+            Department for Genetic Engineering<br>
+            School of Bioengineering<br>
+            SRMIST
+        </div></div>""", unsafe_allow_html=True)
+
+    with c2:
+        st.markdown("""<div class="card card-blue" style="margin-bottom: 1.2rem;">
+        <div style="font-family:Poppins;font-weight:700;color:#1B4FA8;font-size:1rem;margin-bottom:.8rem;">Dr. A. Revathi, PhD</div>
+        <div style="font-size:.87rem;color:#2D3748;line-height:1.8;">
+            Associate Professor<br>
+            Computational Lab<br>
+            Department of Computational Intelligence<br>
+            School of Computing<br>
+            SRMIST
+        </div></div>""", unsafe_allow_html=True)
+
+        st.markdown("""<div class="card card-blue" style="margin-bottom: 1.2rem;">
+        <div style="font-family:Poppins;font-weight:700;color:#1B4FA8;font-size:1rem;margin-bottom:.8rem;">Ms Riya Meher Sanuj Babu</div>
+        <div style="font-size:.87rem;color:#2D3748;line-height:1.8;">
+            Bachelor in Computer Science and Engineering with Specialization in Artificial Intelligence and Machine Learning<br>
+            Department of Computational Intelligence<br>
+            School of Computing<br>
+            SRMIST
+        </div></div>""", unsafe_allow_html=True)
         
-        st.markdown("""
-        <div style="margin-top:1.5rem; text-align: center; font-size:.83rem; color:#4A5568; line-height:1.65;">
-            <b style="color:#0D7A5F;">Disclaimer:</b> GraphAISMNet is a computational research tool.
-            Predictions require experimental validation.
-        </div>
-        """, unsafe_allow_html=True)
+    st.markdown("""
+    <div style="margin-top:1.5rem; text-align: center; font-size:.83rem; color:#4A5568; line-height:1.65;">
+        <b style="color:#0D7A5F;">Disclaimer:</b> GraphAISMNet is a computational research tool.
+        Predictions require experimental validation.
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
-
 
 # ── FOOTER ────────────────────────────────────────────────────────────────────
 st.markdown("""
