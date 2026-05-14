@@ -331,15 +331,30 @@ def show_result(r):
         items="".join([f'<div class="desc-item"><div class="desc-key">{k}</div><div class="desc-val">{v}</div></div>' for k,v in props.items()])
         st.markdown(f'<div style="margin-top:1rem;"><div style="font-family:Poppins;font-weight:600;font-size:.85rem;color:#0D2E6E;margin-bottom:.5rem;">Physicochemical Properties</div><div class="desc-grid">{items}</div></div>',unsafe_allow_html=True)
 
+# ── Helper for Dropdown ────────────────────────────────────────────────────────
+def on_example_change(smi_key, ex_key):
+    ex = st.session_state[ex_key]
+    if ex != "— Custom input —":
+        st.session_state[smi_key] = EXAMPLES[ex]
+    else:
+        st.session_state[smi_key] = ""
+
 # ── Prediction panel (shared) ──────────────────────────────────────────────────
 def predict_panel(model, model_name, btn_label, smi_key, btn_key):
     left,right=st.columns([1,1.2],gap="large")
     with left:
         st.markdown('<div class="card">',unsafe_allow_html=True)
         st.markdown(f'<div style="font-family:Poppins;font-weight:600;font-size:1rem;color:#0D2E6E;margin-bottom:.8rem;">🔬 Single Molecule Input</div>',unsafe_allow_html=True)
-        ex=st.selectbox("Load example",["— Custom input —"]+list(EXAMPLES.keys()),key=smi_key+"_ex")
-        default=EXAMPLES[ex] if ex!="— Custom input —" else ""
-        smi=st.text_area("SMILES string",value=default,height=90,placeholder="Paste SMILES here…",key=smi_key)
+        
+        # Dropdown with a callback to force the text area to update
+        st.selectbox("Load example", ["— Custom input —"] + list(EXAMPLES.keys()), 
+                     key=smi_key+"_ex", 
+                     on_change=on_example_change, 
+                     args=(smi_key, smi_key+"_ex"))
+        
+        # Text area tied directly to the session state key
+        smi=st.text_area("SMILES string", height=90, placeholder="Paste SMILES here…", key=smi_key)
+        
         st.session_state["last_smi"]=smi
         run=st.button(btn_label,key=btn_key)
         if smi.strip():
