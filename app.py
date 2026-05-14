@@ -28,7 +28,12 @@ st.markdown("""
 html,body,[data-testid="stAppViewContainer"],[data-testid="stMain"],[data-testid="block-container"]{
     background:#F0F4FA!important;color:#1A2744!important;font-family:'Inter',sans-serif!important;}
 [data-testid="block-container"]{padding:0!important;max-width:100%!important;}
-#MainMenu,header,footer,[data-testid="stToolbar"],[data-testid="stDecoration"],[data-testid="stStatusWidget"]{display:none!important;}
+
+/* Hide default streamlit elements but KEEP the header so the mobile menu works */
+#MainMenu, footer,
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"] { display: none !important; }
 
 /* ── NAVBAR ─────────────────────────────────────────────────────────────── */
 .navbar{
@@ -158,6 +163,44 @@ label{color:#3A4A6B!important;font-weight:500!important;font-size:.88rem!importa
 .site-footer a{color:#5DDEAE;text-decoration:none;}
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-thumb{background:#B8CCF0;border-radius:3px;}
+
+/* ── MOBILE RESPONSIVENESS ───────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+    /* Stack the navbar and make links swipeable */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    .navbar-links {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 0.5rem;
+    }
+    
+    /* Shrink the giant title so it doesn't word-break */
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .hero-sub {
+        font-size: 0.95rem;
+    }
+    
+    /* Reduce side padding to give cards more room */
+    .page-section {
+        padding: 1.5rem 1rem;
+    }
+    .hero-banner {
+        padding: 2rem 1rem 1.5rem;
+    }
+    
+    /* Make the stat pills wrap nicely */
+    .stat-pill {
+        min-width: 45%;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
