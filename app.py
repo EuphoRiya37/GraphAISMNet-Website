@@ -1,4 +1,3 @@
-import streamlit as st
 import torch, torch.nn as nn, torch.nn.functional as F
 from torch_geometric.data import Data
 from torch_geometric.nn import GATv2Conv, global_mean_pool, global_max_pool
@@ -8,6 +7,17 @@ from rdkit.Chem import AllChem, Descriptors, QED, rdMolDescriptors
 from rdkit.Chem.Draw import rdMolDraw2D
 import os, base64, time
 import warnings
+import streamlit as st
+import sys
+
+try:
+    from rdkit import Chem, RDLogger
+    RDLogger.DisableLog('rdApp.*')
+except ImportError:
+    st.error("RDKit not installed. Please install: pip install rdkit")
+    st.stop()
+
+# REST OF YOUR IMPORTS BELOW
 warnings.filterwarnings("ignore")
 RDLogger.DisableLog('rdApp.*')
 
