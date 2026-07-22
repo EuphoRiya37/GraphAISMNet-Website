@@ -9,4 +9,5 @@ Pillow>=9.0.0
 jupyter>=1.0.0
 pyyaml>=6.0
 requests>=2.31.0
+rdkit==2024.03.1
 # RDKit must be installed via conda
