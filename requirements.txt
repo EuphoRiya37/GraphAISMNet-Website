@@ -1,4 +1,4 @@
-rdkit==2024.03.1
+rdkit-pypi==2024.03.1
 streamlit==1.40.0
 torch==2.1.2
 torch-geometric==2.5.0
